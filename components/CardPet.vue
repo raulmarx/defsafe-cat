@@ -2,7 +2,6 @@
     <div class="bg-secondary py-12">
         <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             <div class="flex items-center">
-                <Icon icon="dashicons:pets" class="ml-3 mr-3 h-12 w-12" style="color: #4E2096" />
                 <h2 class="">Pets para Adoção</h2>
             </div>
             <div class="border"></div>
