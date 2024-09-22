@@ -1,7 +1,6 @@
 <template>
   <div>
     <SidebarNavigation>
-      <!-- O conteúdo principal vai aqui -->
       <div class="p-10"></div>
       <div class="pb-2 left-auto right-0 top-2/4">
         <Button  @click="handleRegister">Register Now</Button>
@@ -16,11 +15,8 @@
         </div>
       </div>
     </SidebarNavigation>
-    <!-- Modal de Edição -->
     <ModalForm :isOpen="isModalOpen" :title="modalTitle" :initialData="formData" @save="saveFormData"
       @cancel="closeModal" />
-
-
     <DeleteModal v-if="showDeleteModal" :show="showDeleteModal" :itemName="petToDelete?.name" @confirm="deletePet"
       @cancel="closeDeleteModal" />
   </div>
@@ -38,18 +34,18 @@ import DeleteModal from '~/components/DeleteModal.vue';
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
 
-// Variáveis reativas para armazenar dados
+
 const tableData = ref([]);
 const currentPage = ref(1);
 const totalPages = ref(1);
-const itemsPerPage = 10; // Defina quantos itens por página você quer exibir
+const itemsPerPage = 10; 
 const isModalOpen = ref(false);
 const modalTitle = ref('');
 const formData = ref({ name: '', age: '', breed: '', description: '', image: null });
-const showDeleteModal = ref(false); // Controla o modal de exclusão
-const petToDelete = ref(null); // Armazena o pet a ser deletado
+const showDeleteModal = ref(false); 
+const petToDelete = ref(null); 
 
-// Função para buscar dados da API
+
 const fetchData = async (page) => {
   currentPage.value = page;
 
@@ -69,19 +65,19 @@ const fetchData = async (page) => {
       description: pet.description,
       image: pet.image
     }));
-    // Atualiza o total de páginas com base no header da resposta
+    
     totalPages.value = Math.ceil(response.data.total / itemsPerPage);
   } catch (error) {
     console.error('Erro ao buscar dados:', error);
   }
 };
 
-// Carregar dados quando o componente for montado
+
 onMounted(() => {
   fetchData(currentPage.value);
 });
 
-// Funções para editar e deletar
+
 
 const handleEdit = (id) => {
   const pet = tableData.value.find((item) => item.id === id);
@@ -139,7 +135,7 @@ const deletePet = async () => {
   try {
     await axios.delete(`/api/pets/${petToDelete.value}`);
     tableData.value = tableData.value.filter(pet => pet.id !== petToDelete.value);
-    closeDeleteModal(); // Fecha o modal
+    closeDeleteModal(); 
   } catch (error) {
     console.error('Erro ao deletar pet:', error);
   }
@@ -150,7 +146,7 @@ const resetForm = () => {
     age: '',
     breed: '',
     description: '',
-    image: null, // Para o upload da imagem
+    image: null, 
     adminId: ''
   };
 };

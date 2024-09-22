@@ -40,12 +40,11 @@ import axios from 'axios';
 import ModalAdoption from './components/ModalAdoption.vue';
 import { Icon } from '@iconify/vue/dist/iconify.js';
 
-// Estado para armazenar os pets, status de carregamento e erro
+
 const pets = ref([]);
 const loading = ref(true);
 const error = ref(null);
 
-// Modal
 const isModalOpen = ref(false);
 const selectedPet = ref(null);
 const isSuccessModalOpen = ref(false);
@@ -69,7 +68,6 @@ const closeSuccessModal = () => {
   isSuccessModalOpen.value = false;
 };
 
-// Função para carregar os pets da API
 const loadPets = async () => {
     try {
         const response = await axios.get('/api/adoptions/get');
@@ -90,7 +88,6 @@ const loadPets = async () => {
     }
 };
 
-// Carregar os pets quando o componente for montado
 onMounted(() => {
     loadPets();
 });

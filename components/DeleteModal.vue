@@ -1,4 +1,3 @@
-<!-- components/DeleteModal.vue -->
 <template>
     <div v-if="show" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50">
       <div class="bg-white p-4 rounded-lg shadow-lg w-1/3">
@@ -14,18 +13,18 @@
   
   <script setup>
   const props = defineProps({
-    show: Boolean, // Controla a exibição do modal
-    itemName: String, // Nome do item a ser deletado
+    show: Boolean,
+    itemName: String,
   });
   
-  const emits = defineEmits(['confirm', 'cancel']); // Emitimos os eventos de confirmar ou cancelar
+  const emits = defineEmits(['confirm', 'cancel']);
   
   const onConfirm = () => {
-    emits('confirm'); // Emite o evento para confirmar a exclusão
+    emits('confirm');
   };
   
   const onCancel = () => {
-    emits('cancel'); // Emite o evento para cancelar a exclusão
+    emits('cancel');
   };
   </script>
   

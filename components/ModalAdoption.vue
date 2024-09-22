@@ -77,7 +77,6 @@
 import { ref } from 'vue';
 import axios from 'axios';
 
-// Props do modal
 const props = defineProps({
   isOpen: Boolean,
   pet: Object
@@ -92,13 +91,11 @@ const form = ref({
   message: ''
 });
 
-// Função para fechar o modal
 const closeModal = () => {
   emit('close');
   resetForm();
 };
 
-// Função para enviar o formulário e fazer a requisição com Axios
 const submitForm = async () => {
   try {
     const response = await axios.post('/api/users/post', {
@@ -109,7 +106,7 @@ const submitForm = async () => {
       message: form.value.message
     });
     
-    // Emite os dados de sucesso para o componente pai
+  
     emit('submit', response.data);
     closeModal();
   } catch (error) {
@@ -118,7 +115,6 @@ const submitForm = async () => {
   }
 };
 
-// Resetar o formulário após fechar
 const resetForm = () => {
   form.value = {
     name: '',

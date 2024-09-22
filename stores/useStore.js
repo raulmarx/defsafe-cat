@@ -1,6 +1,5 @@
 // stores/auth.js
 import { defineStore } from 'pinia';
-import { useNuxtApp } from '#app'; // Para acessar o contexto Nuxt
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://jlodntwwncmbmrgbcrso.supabase.co'
@@ -74,7 +73,6 @@ export const useAuthStore = defineStore('auth', {
     
     async checkAuth() {
 
-      // Verifica se há uma sessão ativa no localStorage
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {

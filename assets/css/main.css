@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Aplicar a fonte Inter globalmente */
 body {
     @apply font-sans;
 }

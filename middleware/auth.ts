@@ -1,13 +1,11 @@
-// middleware/auth.ts
-import { useAuthStore } from '@/stores/useStore'; // Importa o store de autenticação
+import { useAuthStore } from '@/stores/useStore'; 
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
   const authStore = useAuthStore();
 
   if (process.client) {
-    // Se o usuário não está logado, redireciona para a página de login
     if (!authStore.user) {
-      await authStore.checkAuth(); // Verifica a sessão novamente
+      await authStore.checkAuth(); 
 
       if (!authStore.user) {
         return navigateTo('/login');

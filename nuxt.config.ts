@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  plugins: ['~/plugins/initAuth.js','~/plugins/supabase.js'],
+  plugins: ['~/plugins/initAuth','~/plugins/supabase'],
   css: [
     '~/assets/css/main.css'
   ],

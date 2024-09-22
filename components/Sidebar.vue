@@ -1,6 +1,5 @@
 <template>
   <div class="flex">
-    <!-- Sidebar -->
     <div class="w-64 h-screen bg-accent text-primary border-width-2">
       <div class="p-6 text-xl font-bold">
         Menu
@@ -12,7 +11,6 @@
             :key="item.name"
             class="px-6 py-2 hover:bg-secondary"
           >
-            <!-- Check if the item is 'Exit' to apply logout logic -->
             <NuxtLink
               v-if="item.name !== 'Exit'"
               :to="item.link"
@@ -21,7 +19,6 @@
               <Icon :icon="item.icon" class="w-6 h-6" />
               <span>{{ item.name }}</span>
             </NuxtLink>
-            <!-- Logout functionality for Exit -->
             <div
               v-else
               @click="handleLogout"
@@ -35,7 +32,6 @@
       </nav>
     </div>
 
-    <!-- Main Content Area -->
     <div class="flex-1 p-6 bg-gray-100">
       <slot />
     </div>
@@ -63,7 +59,6 @@ const navItems = ref([
 
 const router = useRouter()
 const userStore = useAuthStore();
-// Função de logout
 const handleLogout = async () => {
     await userStore.signOut();
     router.push('/login') 

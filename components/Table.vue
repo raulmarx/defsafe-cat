@@ -29,7 +29,6 @@
         </tr>
       </tbody>
     </table>
-    <!-- Paginação -->
     <div class="flex justify-between items-center mt-4">
       <button class="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300" :disabled="currentPage === 1"
         @click="$emit('changePage', currentPage - 1)">

@@ -25,13 +25,13 @@
   const initialPosition = reactive({ x: 0, y: 0 });
   const isDragging = ref(false);
   
-  // Estilo calculado com base na posição do card
+  
   const style = computed(() => ({
     transform: `translate(${position.x}px, ${position.y}px)`,
     transition: isDragging.value ? 'none' : 'transform 0.3s ease',
   }));
   
-  // Função para começar o arrasto
+  
   function startDrag(event) {
     isDragging.value = true;
     initialPosition.x = event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
@@ -43,7 +43,7 @@
     document.addEventListener('touchend', endDrag);
   }
   
-  // Função de arrasto
+  
   function drag(event) {
     const clientX = event.type === 'mousemove' ? event.clientX : event.touches[0].clientX;
     const clientY = event.type === 'mousemove' ? event.clientY : event.touches[0].clientY;
@@ -52,17 +52,17 @@
     position.y = clientY - initialPosition.y;
   }
   
-  // Função para terminar o arrasto
+  
   function endDrag() {
     isDragging.value = false;
   
-    // Lógica para remover o card ao arrastar para a esquerda ou direita
+    
     if (position.x > 150 || position.x < -150) {
-      position.x = position.x > 0 ? 500 : -500; // Remove o card da tela
+      position.x = position.x > 0 ? 500 : -500; 
       position.y = 0;
-      // Aqui você pode adicionar um evento para remover o card ou salvar o swipe
+      
     } else {
-      // Volta à posição original se o swipe não for forte o suficiente
+      
       position.x = 0;
       position.y = 0;
     }
@@ -76,7 +76,7 @@
   
   <style scoped>
   .card {
-    user-select: none; /* Impede a seleção de texto enquanto arrasta */
+    user-select: none; 
   }
   </style>
   

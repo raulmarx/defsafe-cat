@@ -50,10 +50,10 @@ import { z } from 'zod';
 import { useRouter } from 'vue-router';
 
 const supabaseUrl = 'https://jlodntwwncmbmrgbcrso.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY; // Use uma variável de ambiente
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY; 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Esquema de validação usando Zod
+
 const petSchema = z.object({
   name: z.string().min(1, 'O nome é obrigatório'),
   age: z.number().min(0, 'A idade deve ser positiva'),

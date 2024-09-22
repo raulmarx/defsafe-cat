@@ -50,7 +50,7 @@
 import { ref, watch, defineProps, defineEmits } from 'vue';
 import { createClient } from '@supabase/supabase-js';
 const supabaseUrl = 'https://jlodntwwncmbmrgbcrso.supabase.co';
-const supabaseKey = import.meta.env.VITE_SUPABASE_KEY; // Use uma variável de ambiente
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY; 
 const supabase = createClient(supabaseUrl, supabaseKey);
 const props = defineProps({
     isOpen: Boolean,
@@ -64,7 +64,7 @@ const formData = ref({
     age: '',
     breed: '',
     description: '',
-    image: null, // Para o upload da imagem
+    image: null, 
     adminId:''
 });
 
@@ -80,7 +80,7 @@ const handleCancel = () => {
     emit('cancel');
 };
 
-// Manipulador de upload de imagem
+
 const handleImageUpload = async (event) => {
     const { data: { user } } = await supabase.auth.getUser();
     const file = event.target.files[0];

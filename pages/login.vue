@@ -33,17 +33,17 @@ const form = reactive({
 });
 
 const router = useRouter();
-const userStore = useAuthStore(); // Acessa a store corretamente
+const userStore = useAuthStore(); 
 
 const handleLogin = async () => {
   form.error = null;
 
   try {
-    await userStore.signIn(form.email, form.password); // Usa a função login do store
-      router.push('/admin/home'); // Redireciona após login bem-sucedido
+    await userStore.signIn(form.email, form.password); 
+      router.push('/admin/home'); 
     
   } catch (err) {
-    form.error = 'Algo deu errado. Tente novamente.'; // Captura outros erros
+    form.error = 'Algo deu errado. Tente novamente.'; 
   }
 };
 </script>
