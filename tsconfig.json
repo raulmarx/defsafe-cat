@@ -3,5 +3,7 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "target": "es2020", // ou "es2021" ou "esnext"
-  }
+  },
+
+  "moduleResolution": "Node",
 }
