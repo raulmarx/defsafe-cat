@@ -4,11 +4,11 @@ import { convertBigInt } from '~/utils/convertBigInt';
 const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
-    // Pega os parâmetros de consulta da URL
+    
     const query = getQuery(event);
-    const page = query.page ? parseInt(query.page) : 1; // Página atual, padrão para 1
-    const limit = query.limit ? parseInt(query.limit) : 5; // Itens por página, padrão para 5
-    const skip = (page - 1) * limit; // Cálculo de 'skip' para a consulta
+    const page = query.page ? parseInt(query.page) : 1; 
+    const limit = query.limit ? parseInt(query.limit) : 5; 
+    const skip = (page - 1) * limit; 
 
     try {
         const pets = await prisma.pet.findMany({

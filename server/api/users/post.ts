@@ -7,41 +7,41 @@ export default defineEventHandler(async (event) => {
   const { name, phone, email, message, petId } = body;
 
   try {
-    // Verifica se o pet existe
+    
     const pet = await prisma.pet.findUnique({
-      where: { id: BigInt(petId) }, // Certifique-se de que o petId seja do tipo correto
+      where: { id: BigInt(petId) }, 
     });
 
     if (!pet) {
-      return { error: "Pet not found" }; // Retorna erro se o pet não existir
+      return { error: "Pet not found" }; 
     }
 
-    // Cria o usuário
+    
     const newUser = await prisma.user.create({
       data: {
         name: name.toString(),
-        phone: phone ? phone.toString() : null, // phone é opcional
+        phone: phone ? phone.toString() : null, 
         email: email ? email.toString() : null,
-        message: message ? message.toString() : null, // message é opcional
+        message: message ? message.toString() : null, 
       },
     });
 
-    // Cria a adoção vinculando o usuário e o pet
+    
     const newAdoption = await prisma.adoption.create({
       data: {
         userId: newUser.id,
-        petId: BigInt(petId), // Certifica-se de que o petId está no formato correto
+        petId: BigInt(petId), 
       },
     });
 
     const newPet = await prisma.pet.update({
-      where: { id: BigInt(petId) }, // Verifica o pet pelo ID
+      where: { id: BigInt(petId) }, 
       data: {
         available: false
       },
     });
 
-    // Retorna os dados formatados, convertendo BigInt para string se necessário
+    
     return {
       success: true,
       pet: {
@@ -50,7 +50,7 @@ export default defineEventHandler(async (event) => {
         userId: newAdoption.userId.toString(),
         petId: newAdoption.petId.toString(),
         ...newUser,
-        id: newUser.id.toString(), // Se id for BigInt, converta
+        id: newUser.id.toString(), 
       },
     };
   } catch (error) {
