@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['@prisma/nuxt','@pinia/nuxt'],
+  modules: ['@prisma/nuxt', '@pinia/nuxt', '@nuxtjs/tailwindcss'],
   app: {
     head: {
       link: [

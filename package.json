@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
+    "@nuxtjs/tailwindcss": "^6.12.1",
     "@pinia/nuxt": "^0.5.4",
     "@prisma/nuxt": "^0.0.35",
     "@supabase/supabase-js": "^2.45.4",
