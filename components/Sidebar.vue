@@ -1,9 +1,7 @@
 <template>
   <div class="flex">
     <div class="w-64 h-screen bg-accent text-primary border-width-2">
-      <div class="p-6 text-xl font-bold">
-        Menu
-      </div>
+      <div class="p-6 text-xl font-bold">Menu</div>
       <nav class="mt-8">
         <ul>
           <li
@@ -40,9 +38,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { Icon } from '@iconify/vue'
-import { useRouter } from 'vue-router';
-import { useAuthStore } from '~/stores/useStore';
+import { useRouter } from 'vue-router'
+import { useAuthStore } from '~/stores/useStore'
 
 const navItems = ref([
   {
@@ -52,16 +49,19 @@ const navItems = ref([
   },
   {
     name: 'Exit',
-    link: '/login',
     icon: 'subway:exit',
   }
 ])
 
 const router = useRouter()
-const userStore = useAuthStore();
+const userStore = useAuthStore()
+
 const handleLogout = async () => {
-    await userStore.signOut();
-    router.push('/login') 
-  
+  try {
+    await userStore.signOut()
+    router.push('/login')
+  } catch (error) {
+    console.error('Logout failed:', error)
+  }
 }
 </script>

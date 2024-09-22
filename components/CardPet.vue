@@ -38,7 +38,6 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import ModalAdoption from './components/ModalAdoption.vue';
-import { Icon } from '@iconify/vue/dist/iconify.js';
 
 
 const pets = ref([]);

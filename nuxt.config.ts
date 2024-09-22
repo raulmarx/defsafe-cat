@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
-  modules: ['@prisma/nuxt', '@pinia/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@prisma/nuxt', '@pinia/nuxt', '@nuxtjs/tailwindcss', '@nuxt/icon'],
   app: {
     head: {
       link: [
@@ -40,5 +40,10 @@ export default defineNuxtConfig({
         target: 'es2020'
       }
     }
-  }
+  },
+  vite: {
+    optimizeDeps: {
+      include: ['@iconify/vue'],
+    },
+  },
 })
