@@ -45,5 +45,9 @@ export default defineNuxtConfig({
     optimizeDeps: {
       include: ['@iconify/vue'],
     },
+    ssr: {
+      external: ['@prisma/client'],
+    },
   },
+  
 })

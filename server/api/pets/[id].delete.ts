@@ -1,6 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from '@/server/prisma/client';
 import { convertBigInt } from "~/utils/convertBigInt"; 
-const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   
